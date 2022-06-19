@@ -1,5 +1,6 @@
 package erecruitmentanem.msemployers.entities;
 
+import erecruitmentanem.msemployers.enums.ApplicationStatus ;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +23,10 @@ public class Application {
     private String letter ;
     private String storagePathCV ;
     private Date date ;
-    private String status ;
+
+
+    @Enumerated(EnumType.STRING)
+    private ApplicationStatus status ;
 
     private Long idJobOffer ;
     private Long idJobSeeker ;

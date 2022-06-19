@@ -25,4 +25,8 @@ public class Interview {
     private String result ;
     private String status ;
 
+    private Long idJobSeeker ;
+    private Long idJobOffer ;
+    private Long idEmployer ;
+
 }

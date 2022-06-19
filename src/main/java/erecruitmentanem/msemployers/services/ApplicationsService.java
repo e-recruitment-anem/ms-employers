@@ -4,7 +4,6 @@ import erecruitmentanem.msemployers.entities.Application;
 import erecruitmentanem.msemployers.entities.JobOffer;
 import erecruitmentanem.msemployers.helpers.ExceptionsHandler;
 import erecruitmentanem.msemployers.helpers.ResponseHandler;
-import erecruitmentanem.msemployers.proxies.JobSeekerProxy;
 import erecruitmentanem.msemployers.repositories.ApplicationRepository;
 import erecruitmentanem.msemployers.repositories.JobOfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +18,6 @@ public class ApplicationsService {
 
     @Autowired
     ApplicationRepository applicationRepository;
-
-    @Autowired
-    JobSeekerProxy jobSeekerProxy;
 
     @Autowired
     JobOfferRepository jobOfferRepository;
