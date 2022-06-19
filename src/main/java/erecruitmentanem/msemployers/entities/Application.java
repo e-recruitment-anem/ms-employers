@@ -1,5 +1,6 @@
 package erecruitmentanem.msemployers.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import java.util.Date;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "application")
+@Table(name = "applications")
 @AllArgsConstructor
 public class Application {
     @Id
@@ -22,4 +23,8 @@ public class Application {
     private String storagePathCV ;
     private Date date ;
     private String status ;
+
+    private Long idJobOffer ;
+    private Long idJobSeeker ;
+
 }

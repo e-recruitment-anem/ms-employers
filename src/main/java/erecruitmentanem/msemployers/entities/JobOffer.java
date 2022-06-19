@@ -11,6 +11,7 @@ import erecruitmentanem.msemployers.enums.Gender;
 import erecruitmentanem.msemployers.enums.Mobility;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 
 @Entity
@@ -28,7 +29,7 @@ public class JobOffer {
     private String title ;
     private int positionsNumber ;
     private int avaialablePositionsNumber;
-    private int jobTitle ;//nomocloture
+    private int jobTitle ;
     private String workAddress ;
     private int minAge ;
     private int maxAge ;
@@ -67,4 +68,5 @@ public class JobOffer {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idEmployer", nullable = false)
     private Employer employer;
+
 }

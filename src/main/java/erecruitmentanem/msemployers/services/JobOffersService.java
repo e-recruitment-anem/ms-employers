@@ -6,10 +6,13 @@ import erecruitmentanem.msemployers.helpers.ExceptionsHandler;
 import erecruitmentanem.msemployers.helpers.ResponseHandler;
 import erecruitmentanem.msemployers.repositories.EmployerRepository;
 import erecruitmentanem.msemployers.repositories.JobOfferRepository;
+import erecruitmentanem.msemployers.specification.JobOfferSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 
@@ -22,6 +25,9 @@ public class JobOffersService {
 
      @Autowired
      EmployerRepository employerRepository;
+
+     @Autowired
+     JobOfferSpecification jobOfferSpecification;
 
      public ResponseEntity<Object> createJobOffer(JobOffer body, Long employerId){
         try {
@@ -67,6 +73,8 @@ public class JobOffersService {
             return ExceptionsHandler.badRequestException();
         }
     }
+
+
 
 
     public ResponseEntity<Object> getJobOfferById(Long jobOfferId){
@@ -139,5 +147,24 @@ public class JobOffersService {
             return ExceptionsHandler.badRequestException();
         }
     }
+
+
+    public ResponseEntity<Object> searchJobOffer(int page, int size, JobOffer request) {
+
+        try{
+            Page<JobOffer> pages = null;
+            if (page > -1) {
+                Pageable paging = PageRequest.of(page, size);
+                pages = jobOfferRepository.findAll( jobOfferSpecification.getJobOffer(request),paging);
+            }
+            return ResponseHandler.generateResponse("jobOffers List found.",pages);
+        }catch (Exception e) {
+            return ExceptionsHandler.badRequestException();
+        }
+
+
+    }
+
+
 
 }

@@ -36,6 +36,11 @@ public class JobOfferController {
         return jobOffersService.getJobOfferByEmployerId(idEmployer);
     }
 
+    @GetMapping("/search")
+    ResponseEntity<Object> searchJobOffer(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "3") int size , @RequestBody JobOffer request){
+        return jobOffersService.searchJobOffer(page, size, request);
+    }
+
     @DeleteMapping("/{idEmployer}")
     ResponseEntity<Object> deleteEmployer(@PathVariable Long idEmployer){
         return jobOffersService.deleteJobOffer(idEmployer);
